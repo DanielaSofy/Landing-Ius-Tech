@@ -9,8 +9,6 @@ import { GLBModel, FallbackBox } from "./Model";
 function SceneContents() {
   const groupRef = useRef<THREE.Group>(null);
   const { camera, size } = useThree();
-
-  // Parallax con mouse (suave y acotado)
   const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -32,7 +30,6 @@ function SceneContents() {
       groupRef.current.rotation.x = Math.sin(t * 0.4) * 0.05;
     }
 
-    // Cámara con pequeño parallax, apuntando al centro
     const target = new THREE.Vector3(
       mouse.current.x * 0.6,
       -mouse.current.y * 0.3,
@@ -66,17 +63,16 @@ export default function ThreeBackgroundClient() {
         style={{
           position: "fixed",
           inset: 0,
-          zIndex: 0,            // el contenido de la página va por encima con z-10
-          pointerEvents: "none"
+          zIndex: 0,
+          pointerEvents: "none",
         }}
-        gl={{ alpha: true }}
-        // Fondo transparente (sin usar <color ...> que disparaba el 'any')
-        onCreated={({ gl }) => gl.setClearColor(0x000000, 0)}
+        gl={{ alpha: false }} // <- asegura que no sea transparente
+          onCreated={({ gl }) => {
+            gl.setClearColor("#020617", 1); // slate-950
+          }}
       >
         <SceneContents />
       </Canvas>
-
-      {/* Loader de drei (no bloquea y no usa 'any') */}
       <Loader />
     </>
   );

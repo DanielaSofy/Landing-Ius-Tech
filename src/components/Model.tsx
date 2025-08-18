@@ -1,27 +1,19 @@
 "use client";
 
 import React from "react";
-import { Center, useGLTF } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import type { ThreeElements } from "@react-three/fiber";
+import type { GLTF } from "three-stdlib";
 
 type MeshProps = ThreeElements["mesh"];
 
-// ⬇️ usa exactamente el nombre que tienes en /public/models/
+// Usa el nombre exacto del archivo que subiste a /public/models
 const MODEL_PATH = "/models/dust_looping_rigged_animation_10mb_free.glb";
 
 export function GLBModel(props: MeshProps) {
-  // Carga el GLB y lo devuelve como objeto Three.js
-  const { scene, animations } = useGLTF(MODEL_PATH);
-
-  // Si tu modelo tiene animaciones y quieres reproducirlas luego,
-  // podemos montar un mixer aquí (de momento no es necesario).
-
-  // Center centra y ajusta el pivot del modelo para que no se quede fuera de cámara.
-  return (
-    <Center disableZ>
-      <primitive object={scene} {...props} />
-    </Center>
-  );
+  // 👇 Nada de "animations", ni "any"
+  const gltf = useGLTF(MODEL_PATH) as GLTF;
+  return <primitive object={gltf.scene} {...props} />;
 }
 
 export function FallbackBox(props: MeshProps) {
@@ -33,5 +25,4 @@ export function FallbackBox(props: MeshProps) {
   );
 }
 
-// Precarga el modelo para que aparezca más rápido
 useGLTF.preload(MODEL_PATH);
