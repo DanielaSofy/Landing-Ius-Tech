@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import ThreeBackgroundClient from "@/components/ThreeBackgroundClient";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   ArrowRight, CheckCircle2, FileText, Gavel, CalendarDays, Lock, Bot,
@@ -317,6 +318,7 @@ function Navbar() {
     </div>
   );
 }
+
 
 /* =========================
    Secciones
@@ -751,14 +753,6 @@ function ContactLead() {
           >
             {c.typeform}
           </a>
-          <div className="mt-6 text-left text-sm text-slate-400">
-            <p>{lang === "es" ? "Tips:" : "Tips:"}</p>
-            <ul className="mt-2 list-disc pl-5">
-              <li>{lang === "es" ? "Sustituye el endpoint de Formspree en el atributo 'action'." : "Replace the Formspree endpoint in the 'action' attribute."}</li>
-              <li>{lang === "es" ? "Reemplaza el enlace de Typeform con tu URL única." : "Swap the Typeform link for your unique URL."}</li>
-              <li>{lang === "es" ? "Añade UTM a ambos para atribución de campañas." : "Add UTM to both for campaign attribution."}</li>
-            </ul>
-          </div>
         </div>
       </div>
     </section>
@@ -826,12 +820,19 @@ function Footer() {
 /* =========================
    Página
 ========================= */
-
+// ...
 export default function LandingLegalTechDark() {
   const [lang, setLang] = React.useState<Lang>("es");
+
   return (
     <I18nContext.Provider value={{ lang, setLang }}>
-      <div className="min-h-screen bg-slate-950 text-slate-100 antialiased">
+      {/* Fondo 3D */}
+      <ThreeBackgroundClient />
+
+      {/* Contenido por encima del canvas */}
+      <div className="relative z-10 min-h-screen text-slate-100 antialiased">
+        {/* TIP: usa fondos con opacidad (ej. bg-slate-900/60) en secciones,
+            NO pongas un bg sólido a este div para que se vea el 3D */}
         <Navbar />
         <Hero />
         <Features />
