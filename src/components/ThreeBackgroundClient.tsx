@@ -82,13 +82,14 @@ export default function ThreeBackgroundClient() {
         style={{
           position: "fixed",
           inset: 0,
-          zIndex: 0,            // el contenido irá por encima con z-10
-          pointerEvents: "none"
+          zIndex: 0,
+          pointerEvents: "none",
         }}
-        gl={{ alpha: true }}     // <- fondo transparente
+        gl={{ alpha: false }}                 // <- no transparente
+        onCreated={({ gl }) => {
+          gl.setClearColor("#020617", 1);     // slate-950
+        }}
       >
-        {/* Fondo transparente */}
-        <color attach="background" args={[0, 0, 0, 0] as unknown as any} />
         <SceneContents />
       </Canvas>
       <Loader />
