@@ -358,7 +358,7 @@ function Hero() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3"
             >
-              <a href="#contact" className="rounded-2xl bg-cyan-400/90 px-5 py-3 text-center text-slate-900 transition hover:bg-cyan-300">
+              <a href="https://ius-tech.com.mx/register" target="_blank" rel="noopener noreferrer" className="rounded-2xl bg-cyan-400/90 px-5 py-3 text-center text-slate-900 transition hover:bg-cyan-300">
                 {c.hero.cta1}
               </a>
               <a
@@ -534,73 +534,103 @@ function Pricing() {
   const c = copy[lang].pricing;
   const plans = [
     {
-      name: "Starter",
-      price: "$0",
-      period: c.periodTrial,
-      features: [lang === "es" ? "1 usuario" : "1 user", lang === "es" ? "Automatización documental" : "Document automation", lang === "es" ? "Cálculo de plazos (básico)" : "Deadlines (basic)", lang === "es" ? "Soporte por email" : "Email support"],
-      cta: c.starter,
+      name: "Individual",
+      price: "$25",
+      period: c.periodMonth,
+      features: [
+        lang === "es" ? "1 usuario" : "1 user", 
+        lang === "es" ? "100 documentos/mes" : "100 documents/month",
+        lang === "es" ? "Soporte por email" : "Email support",
+        lang === "es" ? "Plantillas básicas" : "Basic templates"
+      ],
+      cta: lang === "es" ? "Iniciar prueba gratis" : "Start free trial",
+      ctaLink: "https://ius-tech.com.mx/register?plan=individual",
+      popular: false,
     },
     {
-      name: "Pro",
-      price: "$49",
-      period: c.periodMonth,
-      features: [lang === "es" ? "Hasta 5 usuarios" : "Up to 5 users", lang === "es" ? "IA asistente legal" : "AI legal assistant", lang === "es" ? "Expediente electrónico" : "Electronic case file", lang === "es" ? "Reportes PDF ilimitados" : "Unlimited PDF reports", lang === "es" ? "Recordatorios automáticos" : "Automated reminders"],
-      cta: c.pro,
+      name: "Team",
+      price: "$19",
+      period: lang === "es" ? "/mes por usuario" : "/month per user",
+      features: [
+        lang === "es" ? "3-10 usuarios" : "3-10 users",
+        lang === "es" ? "500 documentos/mes por usuario" : "500 documents/month per user",
+        lang === "es" ? "Soporte prioritario" : "Priority support",
+        lang === "es" ? "Plantillas compartidas" : "Shared templates",
+        lang === "es" ? "IA asistente legal" : "AI legal assistant"
+      ],
+      cta: lang === "es" ? "Iniciar prueba gratis" : "Start free trial",
+      ctaLink: "https://ius-tech.com.mx/register?plan=team",
       popular: true,
     },
     {
       name: "Enterprise",
       price: lang === "es" ? "A medida" : "Custom",
       period: "",
-      features: [lang === "es" ? "Usuarios ilimitados" : "Unlimited users", lang === "es" ? "Roles/Permisos avanzados" : "Advanced roles/permissions", lang === "es" ? "SLA y soporte prioritario" : "SLA & priority support", "SSO (SAML)", lang === "es" ? "Onboarding personalizado" : "Guided onboarding"],
+      features: [
+        lang === "es" ? "Usuarios ilimitados" : "Unlimited users",
+        lang === "es" ? "Documentos ilimitados" : "Unlimited documents",
+        lang === "es" ? "Soporte dedicado" : "Dedicated support",
+        lang === "es" ? "Plantillas personalizadas" : "Custom templates",
+        "API access",
+        "SSO (SAML)"
+      ],
       cta: c.ent,
+      ctaLink: "mailto:sales@ius-tech.com.mx",
+      popular: false,
     },
   ];
-  return (
-    <section id="pricing" className="relative mx-auto max-w-7xl px-4 py-16 sm:py-20">
-      <SectionHeader kicker={c.kicker} title={c.title} subtitle={c.subtitle} />
-      <div className="mt-8 sm:mt-10 grid gap-6 md:grid-cols-3">
-        {plans.map((p, i) => (
-          <motion.div
-            key={p.name}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ delay: i * 0.05 }}
-            className={`relative rounded-2xl border ${p.popular ? "border-cyan-400/40" : "border-slate-800"} bg-slate-900/60 p-6`}
-          >
-            {p.popular && (
-              <div className="absolute -top-3 left-6 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-xs text-cyan-200">
-                {c.popular}
+  
+    return (
+      <section id="pricing" className="relative mx-auto max-w-7xl px-4 py-16 sm:py-20">
+        <SectionHeader kicker={c.kicker} title={c.title} subtitle={c.subtitle} />
+        <div className="mt-8 sm:mt-10 grid gap-6 md:grid-cols-3">
+          {plans.map((p, i) => (
+            <motion.div
+              key={p.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ delay: i * 0.05 }}
+              className={`relative rounded-2xl border ${p.popular ? "border-cyan-400/40" : "border-slate-800"} bg-slate-900/60 p-6`}
+            >
+              {p.popular && (
+                <div className="absolute -top-3 left-6 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-xs text-cyan-200">
+                  {c.popular}
+                </div>
+              )}
+              <h3 className="text-lg sm:text-xl font-semibold text-white">{p.name}</h3>
+              <div className="mt-2 flex items-end gap-2">
+                <span className="text-2xl sm:text-3xl font-bold text-white">{p.price}</span>
+                <span className="text-slate-400">{p.period}</span>
               </div>
-            )}
-            <h3 className="text-lg sm:text-xl font-semibold text-white">{p.name}</h3>
-            <div className="mt-2 flex items-end gap-2">
-              <span className="text-2xl sm:text-3xl font-bold text-white">{p.price}</span>
-              <span className="text-slate-400">{p.period}</span>
-            </div>
-            <ul className="mt-4 space-y-2 text-sm text-slate-300">
-              {p.features.map((f) => (
-                <li key={f} className="flex items-start gap-2">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 text-cyan-300" /> {f}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6">
-              <a
-                href="#contact"
-                className={`inline-block w-full text-center rounded-2xl px-5 py-2 ${
-                  p.popular ? "bg-cyan-400/90 text-slate-900 hover:bg-cyan-300" : "border border-slate-700 text-slate-200 hover:border-slate-500"
-                }`}
-              >
-                {p.cta}
-              </a>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </section>
-  );
+              <ul className="mt-4 space-y-2 text-sm text-slate-300">
+                {p.features.map((f) => (
+                  <li key={f} className="flex items-start gap-2">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 text-cyan-300" /> {f}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6">
+                <a 
+                  href={p.ctaLink}
+                  target={p.name === "Enterprise" ? "_self" : "_blank"}
+                  rel="noopener noreferrer"
+                  className={`inline-block w-full text-center rounded-2xl px-5 py-2 ${
+                    p.popular ? "bg-cyan-400/90 text-slate-900 hover:bg-cyan-300" : "border border-slate-700 text-slate-200 hover:border-slate-500"
+                  }`}
+                >
+                  {p.cta}
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+        <div className="mt-8 text-center text-sm text-slate-400">
+          <p>{lang === "es" ? "14 días de prueba gratis. No requiere tarjeta de crédito." : "14-day free trial. No credit card required."}</p>
+          <p className="mt-2">{lang === "es" ? "Precios en USD. Aproximadamente ~$450 MXN para el plan Individual." : "Prices in USD. Approximately ~$450 MXN for Individual plan."}</p>
+        </div>
+      </section>
+    );
 }
 
 function Testimonials() {
