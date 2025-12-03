@@ -159,6 +159,13 @@ export default function ThreeBackgroundClient() {
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
+    // Permitir forzar fallback con ?fallback=true en la URL (para pruebas)
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('fallback') === 'true') {
+      setWebGLSupported(false);
+      return;
+    }
+    
     // Verificar soporte de WebGL en el cliente
     setWebGLSupported(isWebGLAvailable());
   }, []);
