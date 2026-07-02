@@ -54,7 +54,7 @@ export function Hero({
           </motion.p>
           <motion.h1
             {...enter(0.08)}
-            className="mt-4 font-serif text-4xl leading-[1.12] tracking-tight text-ink sm:text-5xl lg:text-[3.4rem]"
+            className="mt-4 font-serif text-4xl leading-[1.12] tracking-tight text-ink sm:text-5xl lg:text-[3.1rem] xl:text-[3.35rem]"
           >
             {title}
           </motion.h1>
