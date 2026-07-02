@@ -1,26 +1,59 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+  Ius-Tech: sistema "papel y tinta"
+  Papel claro casi neutro, tinta azul-negra, un solo acento granate.
+  Radios: botones e inputs 8px, tarjetas 12px. Hairlines para separar.
+*/
+
+@theme {
+  --color-paper: #f7f7f4;
+  --color-paper-raised: #fffffe;
+  --color-ink: #161d28;
+  --color-ink-strong: #0e131b;
+  --color-ink-soft: #444c58;
+  --color-ink-muted: #6a7280;
+  --color-line: #e3e3dc;
+  --color-line-strong: #cfcfc6;
+  --color-accent: #8c3041;
+  --color-accent-deep: #6f2534;
+  --color-accent-wash: #f4ebec;
+
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-caslon), Georgia, "Times New Roman", serif;
+
+  --ease-out-strong: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Numerales tabulares para precios y fechas */
+.tnum {
+  font-variant-numeric: tabular-nums;
 }

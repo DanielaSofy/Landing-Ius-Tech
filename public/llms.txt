@@ -1,0 +1,42 @@
+# Ius-Tech
+
+> Plataforma mexicana de gestión legal para abogados. Organiza expedientes, calcula plazos considerando los días inhábiles del SAT y del TFJA, da seguimiento automático a expedientes del Poder Judicial de la Federación (PJF), monitorea el Diario Oficial de la Federación (DOF), genera escritos de litigio fiscal con IA y produce reportes de estatus en lenguaje claro. Funciona en el navegador, sin instalación.
+
+Ius-Tech fue creada por una abogada fiscalista mexicana en ejercicio. Está en acceso anticipado: los primeros usuarios obtienen precio congelado de por vida y línea directa con la fundadora.
+
+## Páginas
+
+- [Inicio](https://ius-tech.com.mx/): qué es Ius-Tech, funciones generales, precios y preguntas frecuentes
+- [Para abogados fiscalistas](https://ius-tech.com.mx/fiscalistas): cálculo de plazos SAT/TFJA, seguimiento del PJF, monitor del DOF, escritos fiscales con IA
+- [Para equipos legales in-house](https://ius-tech.com.mx/in-house): tareas del equipo, litigios externos, vencimientos de contratos, requerimientos del SAT
+- [Registro](https://ius-tech.com.mx/register): crear cuenta con 14 días de prueba, sin tarjeta
+
+## Funciones principales
+
+- Gestión de expedientes: historial, documentos y asuntos relacionados vinculados a cada cliente
+- Cálculo de plazos SAT y TFJA: descuenta días inhábiles de cada autoridad y muestra el fundamento legal
+- Seguimiento automático del PJF: revisa el portal a diario y notifica acuerdos nuevos por correo
+- Monitor del DOF: alertas de publicaciones fiscales relevantes
+- Generación de escritos con IA: recursos de revocación, contestaciones y promociones con estructura hecha por fiscalistas
+- Chat del Código Fiscal de la Federación: respuestas con artículos citados
+- Reportes de estatus para clientes en lenguaje claro
+- Importación de cartera desde Excel con detección automática de columnas
+
+## Precios (USD, por mes)
+
+- Individual: 25 USD/mes o 20 USD/mes con facturación anual. 1 usuario, expedientes ilimitados.
+- Team: 180 USD/mes o 144 USD/mes con facturación anual. Hasta 10 usuarios, incluye todas las funciones fiscales y de IA. Es el plan recomendado.
+- Enterprise: 450 USD/mes o 360 USD/mes con facturación anual. Hasta 30 usuarios, plantillas personalizadas y onboarding dedicado.
+- Todos los planes incluyen 14 días de prueba sin tarjeta.
+
+## Seguridad
+
+- Aislamiento total de datos por despacho o empresa
+- Cifrado AES-256 en reposo y TLS 1.3 en tránsito
+- Respaldos automáticos diarios
+- Infraestructura en AWS
+
+## Contacto
+
+- Correo: contacto@ius-tech.com.mx
+- País: México
